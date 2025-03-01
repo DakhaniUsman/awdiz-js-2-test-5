@@ -62,7 +62,7 @@ const ZerosToEnd = (array) => {
     }
   }
   // console.log(zeroarray,nonzeroarray)
-  let output = nonzeroarray.concat(zeroarray);
+  let output = [...nonzeroarray,...zeroarray];
 
   // console.log(output)
   return output;
