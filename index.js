@@ -1,48 +1,30 @@
 // Question 1 : Convert Roman Numeral to Integer
 
-// let input = "MCMXCIV";
+let input = "MCMXCIV";
 // let input ="IX";
 // let input = "XII"
 
-
 const RomanToInterger = (input) => {
-  let roman = {
-    I: 1,
-    V: 5,
-    X : 10,
-    C : 100,
-    M : 1000
-  };
+  let roman = { I: 1, V: 5, X: 10, C: 100, M: 1000,L: 50, D : 500 };
 
-  let sum = roman[input[0]];
+  let sum = 0;
 
+  for (let i = 0; i < input.length; i++) {
 
-  for (let i = 0 ; i < input.length - 1; i ++){
+    let currentValue = roman[input[i]];
+    let nextValue = roman[input[i + 1]];
 
-    console.log(input[i],roman[input[i]])
-
-    
-    
-    if (roman[input[i]] < roman[input[i + 1]]){
-        console.log(roman[input[i]] < roman[input[i + 1]],"if")
-       sum-= roman[input[i + 1]];
+    if (currentValue < nextValue) {
+      sum -= currentValue;
+    } else {
+      sum += currentValue;
     }
-    else{
-        console.log(true,"else")
-        console.log(roman[input[i]], roman[input[i+1]])  
-        sum+=  roman[input[i + 1]];
-        console.log(sum)
-    }
-
-
   }
-  sum= Math.abs(sum)
 
   return sum;
-
 };
 
-// console.log(RomanToInterger(input));
+console.log(RomanToInterger(input));
 
 // Question 2 : move all zeros to the end
 
@@ -62,13 +44,13 @@ const ZerosToEnd = (array) => {
     }
   }
   // console.log(zeroarray,nonzeroarray)
-  let output = [...nonzeroarray,...zeroarray];
+  let output = [...nonzeroarray, ...zeroarray];
 
   // console.log(output)
   return output;
 };
 
-// console.log(ZerosToEnd(array));
+console.log(ZerosToEnd(array));
 
 // Question 3 : Generate all substrings of a given string
 
@@ -79,23 +61,19 @@ let string = "abc";
 // a ab abc
 
 const Substrings = (string) => {
-  let word = "";
   let output = [];
-
+  
   for (let i = 0; i < string.length; i++) {
+    let word = "";
     // console.log(string[i],"outer");
 
-    word += string[i];
-    output.push(word);
-
-    for (let j = i + 1; j < string.length; j++) {
+    for (let j = i; j < string.length; j++) {
       // console.log(string[i],string[j]);
 
       word += string[j];
       output.push(word);
     }
 
-    word = "";
 
     // console.log(output);
   }
@@ -103,4 +81,4 @@ const Substrings = (string) => {
   return output;
 };
 
-// console.log(Substrings(string));
+console.log(Substrings(string));
